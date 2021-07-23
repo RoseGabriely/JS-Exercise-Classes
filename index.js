@@ -134,7 +134,7 @@ const obj = {
   location: 'Boston'
 }
 
-let newLambdasian = new Lambdasian(obj)
+const newLambdasian = new Lambdasian(obj);
 
 console.log(newLambdasian)
 
@@ -152,9 +152,47 @@ console.log(newLambdasian)
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
+class Instructor extends Lambdasian{
+  constructor(obj) {
+    super(obj);
+    this.specialty = obj.specialty;
+    this.favLanguage = obj.favLanguage;
+    this.catchPhrase = obj.catchPhrase;
+  }
+
+  demo(subject) {
+    return `Today we are learning about ${subject}`
+  }
+
+  grade(student, subject) {
+    return `${student.name} receives a perfect score on ${subject}`
+  }
+
 
 }
+
+const obj2 = {
+  name: 'Rose',
+  age: 18,
+  location: 'Boston',
+  specialty: 'HTML/CSS',
+  favLanguage: 'Python',
+  catchPhrase: 'Dont forget the homies'
+
+}
+
+const stuObj = {
+  name: 'rosestu',
+  age: 18
+}
+
+
+const newInstructor = new Instructor(obj2)
+
+console.log(newInstructor)
+console.log(newInstructor.demo('JS'))
+console.log(newInstructor.grade(stuObj, 'python'))
+
 /*
   TASK 5
     - Write a Student class extending Lambdasian.
